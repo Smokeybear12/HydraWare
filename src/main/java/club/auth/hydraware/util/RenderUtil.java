@@ -6,9 +6,7 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import org.lwjgl.opengl.GL11;
 
-import static org.lwjgl.opengl.GL11.GL_QUADS;
-
-public class RenderUtil implements Global{
+public class RenderUtil implements Global {
 
     private static final BufferBuilder bufferbuilder = Tessellator.getInstance().getBuffer();
     private static final Tessellator tessellator = Tessellator.getInstance();

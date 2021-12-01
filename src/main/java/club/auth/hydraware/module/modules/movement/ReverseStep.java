@@ -4,11 +4,11 @@ import club.auth.hydraware.module.Module;
 import club.auth.hydraware.setting.settings.SettingDouble;
 
 public class ReverseStep extends Module {
-    public ReverseStep() {
-        super("ReverseStep", "",0,Category.MOVEMENT);
-    }
+    SettingDouble speed = this.register("Speed", 5.0F, 0.0F, 20.0F);
 
-    SettingDouble speed = this.register("Speed",5.0F, 0.0F, 20.0F);
+    public ReverseStep() {
+        super("ReverseStep", "", 0, Category.MOVEMENT);
+    }
 
     @Override
     public void update() {

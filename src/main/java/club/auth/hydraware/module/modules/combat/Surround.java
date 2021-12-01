@@ -2,7 +2,6 @@ package club.auth.hydraware.module.modules.combat;
 
 import club.auth.hydraware.module.Module;
 import club.auth.hydraware.setting.settings.SettingBoolean;
-import club.auth.hydraware.setting.settings.SettingMode;
 import club.auth.hydraware.util.BlockUtil;
 import club.auth.hydraware.util.InventoryUtil;
 import club.auth.hydraware.util.PlayerUtil;
@@ -14,19 +13,7 @@ import net.minecraft.util.math.Vec3d;
 import java.util.ArrayList;
 
 public class Surround extends Module {
-    public Surround() {
-        super("Surround","",0,Category.COMBAT);
-    }
-
-    SettingBoolean smart = register("Smart",false);
-    SettingBoolean center = register("Center",true);
-    SettingBoolean rotate = register("Rotate",false);
-
-    private BlockPos startPos;
-    private ArrayList<BlockPos> retryPos;
-    double posY;
-
-    private static final BlockPos[] surroundPos = new BlockPos[] {
+    private static final BlockPos[] surroundPos = new BlockPos[]{
             new BlockPos(0, -1, 0),
             new BlockPos(1, -1, 0),
             new BlockPos(-1, -1, 0),
@@ -38,10 +25,20 @@ public class Surround extends Module {
             new BlockPos(0, 0, 1),
             new BlockPos(0, 0, -1),
     };
+    SettingBoolean smart = register("Smart", false);
+    SettingBoolean center = register("Center", true);
+    SettingBoolean rotate = register("Rotate", false);
+    double posY;
+    private BlockPos startPos;
+    private ArrayList<BlockPos> retryPos;
+
+    public Surround() {
+        super("Surround", "", 0, Category.COMBAT);
+    }
 
     @Override
-    public void onEnable(){
-        if(nullCheck())return;
+    public void onEnable() {
+        if (nullCheck()) return;
         startPos = PlayerUtil.getPlayerPos();
         retryPos = new ArrayList<>();
         if (center.getValue()) {
@@ -78,8 +75,8 @@ public class Surround extends Module {
     }
 
     @Override
-    public void update(){
-        if(nullCheck()){
+    public void update() {
+        if (nullCheck()) {
             this.toggle();
             return;
         }
@@ -87,37 +84,37 @@ public class Surround extends Module {
             this.toggle();
             return;
         }
-        if(startPos != null){
-            if(!startPos.equals(PlayerUtil.getPlayerPos())){
+        if (startPos != null) {
+            if (!startPos.equals(PlayerUtil.getPlayerPos())) {
                 this.toggle();
                 return;
             }
         }
-        if(!retryPos.isEmpty() && retryPos.size() < surroundPos.length && smart.getValue()){
-            for(final BlockPos pos : retryPos){
+        if (!retryPos.isEmpty() && retryPos.size() < surroundPos.length && smart.getValue()) {
+            for (final BlockPos pos : retryPos) {
                 final BlockPos newPos = addPos(pos);
-                if(BlockUtil.isPositionPlaceable(newPos, false) < 2)continue;
+                if (BlockUtil.isPositionPlaceable(newPos, false) < 2) continue;
                 final int slot = InventoryUtil.findHotbarBlock(BlockObsidian.class);
-                if(slot == -1)this.toggle();
-                if(BlockUtil.placeBlock(newPos, slot, rotate.getValue(), rotate.getValue())){
+                if (slot == -1) this.toggle();
+                if (BlockUtil.placeBlock(newPos, slot, rotate.getValue(), rotate.getValue())) {
                     retryPos.remove(newPos);
                 }
             }
             return;
         }
 
-        for(final BlockPos pos : surroundPos){
+        for (final BlockPos pos : surroundPos) {
             final BlockPos newPos = addPos(pos);
-            if(BlockUtil.isPositionPlaceable(newPos, false) < 2)continue;
+            if (BlockUtil.isPositionPlaceable(newPos, false) < 2) continue;
             final int slot = InventoryUtil.findHotbarBlock(BlockObsidian.class);
-            if(slot == -1)this.toggle();
-            if(!BlockUtil.placeBlock(newPos, slot, rotate.getValue(), rotate.getValue())){
+            if (slot == -1) this.toggle();
+            if (!BlockUtil.placeBlock(newPos, slot, rotate.getValue(), rotate.getValue())) {
                 retryPos.add(newPos);
             }
         }
     }
 
-    private BlockPos addPos(final BlockPos pos){
+    private BlockPos addPos(final BlockPos pos) {
         final BlockPos pPos = PlayerUtil.getPlayerPos(0.2);
         return new BlockPos(pPos.getX() + pos.getX(), pPos.getY() + pos.getY(), pPos.getZ() + pos.getZ());
     }

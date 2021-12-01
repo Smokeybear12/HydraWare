@@ -1,9 +1,8 @@
 package club.auth.hydraware.command;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
 import club.auth.hydraware.HydraWare;
+import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
-import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 
 public class Messages {

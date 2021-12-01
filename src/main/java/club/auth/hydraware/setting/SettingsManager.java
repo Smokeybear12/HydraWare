@@ -14,7 +14,7 @@ public class SettingsManager {
 
     public ArrayList<Setting> getSettingsInMod(Module mod) {
         ArrayList<Setting> sets = new ArrayList<>();
-        for(Setting s : settings) {
+        for (Setting s : settings) {
             if (s.getMod() == mod) {
                 sets.add(s);
             }

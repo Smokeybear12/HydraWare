@@ -8,21 +8,10 @@ import net.minecraft.entity.passive.EntityLlama;
 import net.minecraft.util.MovementInput;
 
 public class EntitySpeed extends Module {
+    SettingDouble speed = this.register("Speed", 1, 0.1, 5);
+
     public EntitySpeed() {
-        super("EntitySpeed","",0,Category.MOVEMENT);
-    }
-
-    SettingDouble speed = this.register("Speed",1,0.1,5);
-
-    @Override
-    public void update() {
-        try {
-            if (mc.player.getRidingEntity() != null) {
-                Entity theEntity = mc.player.getRidingEntity();
-                speedEntity(theEntity, speed.getValue());
-            }
-        } catch (Exception ignored) {
-        }
+        super("EntitySpeed", "", 0, Category.MOVEMENT);
     }
 
     private static void speedEntity(Entity entity, Double speed) {
@@ -57,6 +46,17 @@ public class EntitySpeed extends Module {
                 EntityMinecart em = (EntityMinecart) entity;
                 em.setVelocity((forward * speed * Math.cos(Math.toRadians(yaw + 90.0F)) + strafe * speed * Math.sin(Math.toRadians(yaw + 90.0F))), em.motionY, (forward * speed * Math.sin(Math.toRadians(yaw + 90.0F)) - strafe * speed * Math.cos(Math.toRadians(yaw + 90.0F))));
             }
+        }
+    }
+
+    @Override
+    public void update() {
+        try {
+            if (mc.player.getRidingEntity() != null) {
+                Entity theEntity = mc.player.getRidingEntity();
+                speedEntity(theEntity, speed.getValue());
+            }
+        } catch (Exception ignored) {
         }
     }
 }

@@ -2,7 +2,6 @@ package club.auth.hydraware.gui;
 
 import club.auth.hydraware.HydraWare;
 import club.auth.hydraware.module.Module;
-import club.auth.hydraware.setting.Setting;
 import club.auth.hydraware.setting.settings.SettingBoolean;
 import club.auth.hydraware.setting.settings.SettingDouble;
 import club.auth.hydraware.setting.settings.SettingInteger;
@@ -10,7 +9,6 @@ import club.auth.hydraware.setting.settings.SettingMode;
 import net.minecraft.client.gui.GuiScreen;
 
 import java.awt.*;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 

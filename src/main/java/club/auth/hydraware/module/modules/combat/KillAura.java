@@ -22,37 +22,12 @@ import java.util.List;
  */
 
 public class KillAura extends Module {
-    public KillAura() {
-        super("KillAura","",0,Category.COMBAT);
-    }
-
     private SettingBoolean onlySword = register("OnlySword", true);
     private SettingDouble range = register("Range", 5.5d, 0.0d, 7.0d);
-    private SettingBoolean rotate = register("Rotate",false);
+    private SettingBoolean rotate = register("Rotate", false);
     private SettingBoolean crits = register("Criticals", true);
     private SettingBoolean delay = register("Delay", true);
-
     private boolean isAttacking = false;
-
-    @Override
-    public void update() {
-        if(mc.world.playerEntities.isEmpty()) return; // if the client world or client player don't exist or there are no players in render distance return
-        if(onlySword.getValue()){
-            if(!(mc.player.getHeldItemMainhand().getItem() instanceof ItemSword)) return; // not holding sword
-        }
-
-        List<EntityPlayer> list = new ArrayList<>();
-        for(EntityPlayer player : mc.world.playerEntities){
-            if (player == mc.player) continue;
-            if (mc.player.getDistance(player) > range.getValue()) continue;
-            if (player.getHealth() <= 0 || player.isDead) continue; //  ignore player dead
-            if (!FriendsManager.isFriend(player.getName())) continue; //ignore friends
-            list.add(player);
-        }
-        if(list.isEmpty()) return;
-        attack(list.get(0));
-    }
-
     // criticals
     @EventHandler
     private final Listener<PacketEvent.Send> receiveListener = new Listener<>(event -> {
@@ -65,10 +40,35 @@ public class KillAura extends Module {
         }
     });
 
+    public KillAura() {
+        super("KillAura", "", 0, Category.COMBAT);
+    }
+
+    @Override
+    public void update() {
+        if (mc.world.playerEntities.isEmpty())
+            return; // if the client world or client player don't exist or there are no players in render distance return
+        if (onlySword.getValue()) {
+            if (!(mc.player.getHeldItemMainhand().getItem() instanceof ItemSword)) return; // not holding sword
+        }
+
+        List<EntityPlayer> list = new ArrayList<>();
+        for (EntityPlayer player : mc.world.playerEntities) {
+            if (player == mc.player) continue;
+            if (mc.player.getDistance(player) > range.getValue()) continue;
+            if (player.getHealth() <= 0 || player.isDead) continue; //  ignore player dead
+            if (!FriendsManager.isFriend(player.getName())) continue; //ignore friends
+            list.add(player);
+        }
+        if (list.isEmpty()) return;
+        attack(list.get(0));
+    }
+
     private void attack(EntityPlayer target) {
         if (mc.player.getCooledAttackStrength(0f) >= 1f || !delay.getValue()) { // check hit delay
             isAttacking = true; // set variable for criticals
-            if (rotate.getValue()) HydraWare.instance.rotationManager.rotate(target.posX, target.posY, target.posZ); // rotate to the target
+            if (rotate.getValue())
+                HydraWare.instance.rotationManager.rotate(target.posX, target.posY, target.posZ); // rotate to the target
             mc.playerController.attackEntity(mc.player, target); // attack
             mc.player.swingArm(EnumHand.MAIN_HAND); // swing hand
             if (rotate.getValue()) HydraWare.instance.rotationManager.reset(); // reset rotation

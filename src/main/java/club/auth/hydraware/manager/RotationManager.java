@@ -17,39 +17,38 @@ public class RotationManager implements Global {
     private float yaw = 0;
     private float pitch = 0;
     private boolean shouldRotate = false;
-
-    public RotationManager(){
-        MinecraftForge.EVENT_BUS.register(this);
-    }
-
     @EventHandler
     private final Listener<PacketEvent.Send> receiveListener = new Listener<>(event -> {
-        if(event.getPacket() instanceof CPacketPlayer){
+        if (event.getPacket() instanceof CPacketPlayer) {
             CPacketPlayer packet = (CPacketPlayer) event.getPacket();
-            if(shouldRotate){
+            if (shouldRotate) {
                 packet.yaw = yaw;
                 packet.pitch = pitch;
             }
         }
     });
 
-    // this resets yaw and pitch
-    public void reset(){
-        shouldRotate = false;
-        if(mc.player == null) return;
-        yaw = mc.player.rotationYaw;
-        pitch = mc.player.rotationPitch;
- 
+    public RotationManager() {
+        MinecraftForge.EVENT_BUS.register(this);
     }
 
-	// sets yaw and pitch of packets you send, don't forget to call reset() otherwise you'll get desynced
-    public void rotate(double x, double y, double z){
-        if(mc.player == null) return;
+    // this resets yaw and pitch
+    public void reset() {
+        shouldRotate = false;
+        if (mc.player == null) return;
+        yaw = mc.player.rotationYaw;
+        pitch = mc.player.rotationPitch;
+
+    }
+
+    // sets yaw and pitch of packets you send, don't forget to call reset() otherwise you'll get desynced
+    public void rotate(double x, double y, double z) {
+        if (mc.player == null) return;
         Double[] v = calculateLookAt(x, y, z, mc.player);
         shouldRotate = true;
         yaw = v[0].floatValue();
         pitch = v[1].floatValue();
-   }
+    }
 
     /**
      * @author 086

@@ -1,12 +1,11 @@
 package club.auth.hydraware.module.modules.movement;
 
 import club.auth.hydraware.module.Module;
-import club.auth.hydraware.setting.settings.SettingDouble;
 import net.minecraft.init.Blocks;
 
 public class IceSpeed extends Module {
     public IceSpeed() {
-        super("IceSpeed", "", 0,Category.MOVEMENT);
+        super("IceSpeed", "", 0, Category.MOVEMENT);
     }
 
     @Override

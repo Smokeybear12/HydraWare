@@ -1,9 +1,12 @@
 package club.auth.hydraware.module;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
 import club.auth.hydraware.HydraWare;
 import club.auth.hydraware.command.Messages;
-import club.auth.hydraware.setting.settings.*;
+import club.auth.hydraware.setting.settings.SettingBoolean;
+import club.auth.hydraware.setting.settings.SettingDouble;
+import club.auth.hydraware.setting.settings.SettingInteger;
+import club.auth.hydraware.setting.settings.SettingMode;
+import com.mojang.realmsclient.gui.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 
@@ -26,15 +29,6 @@ public class Module {
         this.category = category;
     }
 
-    public enum Category {
-        MAIN,
-        COMBAT,
-        MOVEMENT,
-        RENDER,
-        MISC,
-        PLAYER
-    }
-
     public void enable() {
         HydraWare.EVENT_BUS.subscribe(this);
         MinecraftForge.EVENT_BUS.register(this);
@@ -55,9 +49,11 @@ public class Module {
         else disable();
     }
 
-    public void update() { }
+    public void update() {
+    }
 
-    public void render() {}
+    public void render() {
+    }
 
     public void onEnable() {
     }
@@ -115,30 +111,39 @@ public class Module {
     }
 
     public SettingBoolean register(String name, boolean value) {
-        SettingBoolean set = new SettingBoolean(name,this,value);
+        SettingBoolean set = new SettingBoolean(name, this, value);
         HydraWare.instance.settingsManager.settings.add(set);
         return set;
     }
 
     public SettingMode register(String name, ArrayList<String> values, String value) {
-        SettingMode set = new SettingMode(name,this,values,value);
+        SettingMode set = new SettingMode(name, this, values, value);
         HydraWare.instance.settingsManager.settings.add(set);
         return set;
     }
 
     public SettingInteger register(String name, int value, int min, int max) {
-        SettingInteger set = new SettingInteger(name,this,value,min,max);
+        SettingInteger set = new SettingInteger(name, this, value, min, max);
         HydraWare.instance.settingsManager.settings.add(set);
         return set;
     }
 
     public SettingDouble register(String name, double value, double min, double max) {
-        SettingDouble set = new SettingDouble(name,this,(int)value,(int)min,(int)max);
+        SettingDouble set = new SettingDouble(name, this, (int) value, (int) min, (int) max);
         HydraWare.instance.settingsManager.settings.add(set);
         return set;
     }
 
     public boolean nullCheck() {
         return mc.player == null || mc.world == null;
+    }
+
+    public enum Category {
+        MAIN,
+        COMBAT,
+        MOVEMENT,
+        RENDER,
+        MISC,
+        PLAYER
     }
 }

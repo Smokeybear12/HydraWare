@@ -2,7 +2,7 @@ package club.auth.hydraware.util;
 
 import net.minecraft.util.math.BlockPos;
 
-public class PlayerUtil implements Global{
+public class PlayerUtil implements Global {
 
     public static BlockPos getPlayerPos() {
         return new BlockPos(Math.floor(mc.player.posX), Math.floor(mc.player.posY), Math.floor(mc.player.posZ));

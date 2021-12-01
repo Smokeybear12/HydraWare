@@ -8,7 +8,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class GUIBlur extends Module {
     public GUIBlur() {
-        super("GUIBlur","", 0, Category.MAIN);
+        super("GUIBlur", "", 0, Category.MAIN);
     }
 
     public void onDisable() {
@@ -19,7 +19,7 @@ public class GUIBlur extends Module {
 
     public void update() {
         if (mc.world != null) {
-            if (mc.currentScreen == HydraWare.instance.clickGui){// Checks for the gui
+            if (mc.currentScreen == HydraWare.instance.clickGui) {// Checks for the gui
                 if (OpenGlHelper.shadersSupported && mc.getRenderViewEntity() instanceof EntityPlayer) {
                     if (mc.entityRenderer.getShaderGroup() != null) {
                         mc.entityRenderer.getShaderGroup().deleteShaderGroup();// This shit is just here so it doesnt crash// SUPER SECRET SHADER
@@ -32,7 +32,7 @@ public class GUIBlur extends Module {
                 } else if (mc.entityRenderer.getShaderGroup() != null && mc.currentScreen == null) {
                     mc.entityRenderer.getShaderGroup().deleteShaderGroup();// This shit is just here so it doesnt crash
                 }
-            }else{
+            } else {
                 if (mc.entityRenderer.getShaderGroup() != null) {
                     mc.entityRenderer.getShaderGroup().deleteShaderGroup();// This shit is just here so it doesnt crash// its not SALGACk, its FROM MINECRAFT,  ITS FR
                 }

@@ -45,10 +45,10 @@ public class SettingMode extends Setting {
 
     public void increment() {
         index++;
-        if(index > values.size() - 1) {
+        if (index > values.size() - 1) {
             index = 0;
         }
-        if(index < 0) {
+        if (index < 0) {
             index = values.size() - 1;
         }
         value = values.get(index);

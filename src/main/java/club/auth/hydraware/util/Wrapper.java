@@ -14,16 +14,16 @@ public class Wrapper {
     public static volatile Wrapper INSTANCE = new Wrapper();
 
     @Nullable
-    public static EntityPlayerSP getPlayer(){
+    public static EntityPlayerSP getPlayer() {
         return mc.player;
     }
 
     @Nullable
-    public static WorldClient getWorld(){
+    public static WorldClient getWorld() {
         return mc.world;
     }
 
-    public static FontRenderer getFontRenderer(){
+    public static FontRenderer getFontRenderer() {
         return mc.fontRenderer;
     }
 

@@ -1,17 +1,18 @@
 package club.auth.hydraware.module.modules.player;
 
-import com.mojang.authlib.GameProfile;
 import club.auth.hydraware.module.Module;
+import com.mojang.authlib.GameProfile;
 import net.minecraft.client.entity.EntityOtherPlayerMP;
 import net.minecraft.world.GameType;
 
 import java.util.UUID;
 
 public class FakePlayer extends Module {
-    public FakePlayer() {
-        super("FakePlayer", "Spawns a bot",0,Category.PLAYER);
-    }
     private EntityOtherPlayerMP bot;
+
+    public FakePlayer() {
+        super("FakePlayer", "Spawns a bot", 0, Category.PLAYER);
+    }
 
     public void onEnable() {
         if (mc.player.isDead) {

@@ -1,6 +1,5 @@
 package club.auth.hydraware.module.modules.combat;
 
-import club.auth.hydraware.command.Messages;
 import club.auth.hydraware.module.Module;
 import net.minecraft.init.Items;
 import net.minecraft.network.play.client.CPacketHeldItemChange;
@@ -8,11 +7,11 @@ import net.minecraft.network.play.client.CPacketPlayerTryUseItem;
 import net.minecraft.util.EnumHand;
 
 public class SilentEXP extends Module {
-    public SilentEXP() {
-        super("SilentEXP","",0,Category.COMBAT);
-    }
-
     int prvSlot;
+
+    public SilentEXP() {
+        super("SilentEXP", "", 0, Category.COMBAT);
+    }
 
     @Override
     public void update() {

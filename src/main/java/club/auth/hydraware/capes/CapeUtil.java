@@ -8,7 +8,8 @@ import javax.imageio.ImageIO;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CapeUtil {
 
@@ -25,6 +26,10 @@ public class CapeUtil {
         }
     }
 
+    static {
+        CapeUtil.lines = new ArrayList<String>();
+    }
+
     public static void getUsersCape() {
         try {
             final URL url = new URL("https://pastebin.com/raw/ksdL26BT");
@@ -34,18 +39,13 @@ public class CapeUtil {
                 CapeUtil.lines.add(line);
             }
             bufferedReader.close();
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
 
     public static boolean isCapeUser(final String name) {
         return CapeUtil.lines.contains(name);
-    }
-
-    static {
-        CapeUtil.lines = new ArrayList<String>();
     }
 
 }

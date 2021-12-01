@@ -5,7 +5,7 @@ import net.minecraft.world.GameType;
 
 public class Gamemode extends Module {
     public Gamemode() {
-        super("Gamemode", "Fake gamemode 1.",0, Category.PLAYER);
+        super("Gamemode", "Fake gamemode 1.", 0, Category.PLAYER);
     }
 
     @Override

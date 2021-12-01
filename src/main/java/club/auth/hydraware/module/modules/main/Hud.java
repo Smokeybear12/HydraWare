@@ -1,6 +1,5 @@
 package club.auth.hydraware.module.modules.main;
 
-import com.mojang.realmsclient.gui.ChatFormatting;
 import club.auth.hydraware.HydraWare;
 import club.auth.hydraware.module.Module;
 import club.auth.hydraware.setting.settings.SettingBoolean;
@@ -15,15 +14,14 @@ import java.util.Date;
 import java.util.Objects;
 
 public class Hud extends Module {
+    SettingBoolean csgowatermark = this.register("CSGOWatermark", true);
+    SettingBoolean watermark = this.register("Watermark", true);
+    SettingBoolean greeter = this.register("Greeter", true);
+    SettingBoolean ping = this.register("Ping", true);
+    SettingBoolean fps = this.register("Fps", true);
     public Hud() {
-        super("Hud","Its Hud Does it Need A Explanation?", 0,Category.MAIN);
+        super("Hud", "Its Hud Does it Need A Explanation?", 0, Category.MAIN);
     }
-
-    SettingBoolean csgowatermark = this.register("CSGOWatermark",true);
-    SettingBoolean watermark = this.register("Watermark",true);
-    SettingBoolean greeter = this.register("Greeter",true);
-    SettingBoolean ping = this.register("Ping",true);
-    SettingBoolean fps = this.register("Fps",true);
 
     @SubscribeEvent
     public void renderOverlay(RenderGameOverlayEvent event) {

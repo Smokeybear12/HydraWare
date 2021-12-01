@@ -11,10 +11,6 @@ import net.minecraft.network.play.server.SPacketSoundEffect;
 import net.minecraft.util.EnumHand;
 
 public class AutoFish extends Module {
-    public AutoFish() {
-        super("AutoFish", "Fishes automatically.", 0, Category.MISC);
-    }
-
     @EventHandler
     private final Listener<PacketEvent.Receive> receiveListener = new Listener<>(event -> {
         if (event.getPacket() instanceof SPacketSoundEffect) {
@@ -35,5 +31,9 @@ public class AutoFish extends Module {
             }
         }
     });
+
+    public AutoFish() {
+        super("AutoFish", "Fishes automatically.", 0, Category.MISC);
+    }
 }
 

@@ -2,13 +2,13 @@ package club.auth.hydraware.manager;
 
 // ez by s1ash
 
-import com.google.gson.*;
 import club.auth.hydraware.HydraWare;
 import club.auth.hydraware.module.Module;
 import club.auth.hydraware.setting.settings.SettingBoolean;
 import club.auth.hydraware.setting.settings.SettingDouble;
 import club.auth.hydraware.setting.settings.SettingInteger;
 import club.auth.hydraware.setting.settings.SettingMode;
+import com.google.gson.*;
 
 import java.io.IOException;
 import java.io.InputStream;

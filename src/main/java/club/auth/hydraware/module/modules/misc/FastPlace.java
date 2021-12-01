@@ -7,19 +7,18 @@ import net.minecraft.item.ItemEndCrystal;
 import net.minecraft.item.ItemExpBottle;
 
 public class FastPlace extends Module {
+    SettingBoolean everything = register("Everything", false);
+    SettingBoolean blocks = register("Blocks", false);
+    SettingBoolean crystals = register("Crystals", false);
+    SettingBoolean exp = register("Exp", false);
     public FastPlace() {
-        super("FastPlace","",0,Category.MISC);
+        super("FastPlace", "", 0, Category.MISC);
     }
-
-    SettingBoolean everything = register("Everything",false);
-    SettingBoolean blocks = register("Blocks",false);
-    SettingBoolean crystals = register("Crystals",false);
-    SettingBoolean exp = register("Exp",false);
 
     @Override
     public void update() {
         if (everything.getValue()) {
-          mc.rightClickDelayTimer = 0;
+            mc.rightClickDelayTimer = 0;
         }
         if (exp.getValue() && mc.player.getHeldItemMainhand().getItem() instanceof ItemExpBottle || mc.player.getHeldItemOffhand().getItem() instanceof ItemExpBottle) {
             mc.rightClickDelayTimer = 0;

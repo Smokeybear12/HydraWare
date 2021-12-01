@@ -8,13 +8,19 @@ import me.zero.alpine.listener.Listener;
 import net.minecraft.network.play.server.SPacketTimeUpdate;
 
 public class CustomTime extends Module {
-    public CustomTime() {
-        super("CustomTime","Allows you to change game time.",0,Category.RENDER);
-    }
-
+    @EventHandler
+    private final Listener<PacketEvent.Receive> receiveListener = new Listener<>(event -> {
+        if (event.getPacket() instanceof SPacketTimeUpdate) {
+            event.cancel();
+        }
+    });
     long time = 0;
 
-    SettingDouble clientTime = this.register("Time", 18000L,0L,23992L);
+    SettingDouble clientTime = this.register("Time", 18000L, 0L, 23992L);
+
+    public CustomTime() {
+        super("CustomTime", "Allows you to change game time.", 0, Category.RENDER);
+    }
 
     @Override
     public void onEnable() {
@@ -25,13 +31,6 @@ public class CustomTime extends Module {
     public void update() {
         mc.world.setWorldTime((long) clientTime.getValue());
     }
-
-    @EventHandler
-    private final Listener<PacketEvent.Receive> receiveListener = new Listener<>(event -> {
-        if (event.getPacket() instanceof SPacketTimeUpdate) {
-            event.cancel();
-        }
-    });
 
     @Override
     public void onDisable() {

@@ -5,7 +5,6 @@ import club.auth.hydraware.event.events.NetworkPacketEvent;
 import club.auth.hydraware.event.events.PacketEvent;
 import io.netty.channel.ChannelHandlerContext;
 import net.minecraft.network.NetworkManager;
-
 import net.minecraft.network.Packet;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

@@ -18,12 +18,15 @@ public class Setting {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public Module getMod() {
         return mod;
     }
+
     public void setMod(Module mod) {
         this.mod = mod;
     }

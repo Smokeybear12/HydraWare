@@ -1,7 +1,6 @@
 package club.auth.hydraware.gui;
 
 import club.auth.hydraware.setting.settings.SettingDouble;
-import club.auth.hydraware.setting.settings.SettingInteger;
 import net.minecraft.util.math.MathHelper;
 
 import java.awt.*;

@@ -1,11 +1,17 @@
 package club.auth.hydraware.module;
 
-import club.auth.hydraware.module.modules.main.*;
 import club.auth.hydraware.module.modules.combat.*;
-import club.auth.hydraware.module.modules.misc.*;
+import club.auth.hydraware.module.modules.main.GUI;
+import club.auth.hydraware.module.modules.main.GUIBlur;
+import club.auth.hydraware.module.modules.main.Hud;
+import club.auth.hydraware.module.modules.misc.AutoFish;
+import club.auth.hydraware.module.modules.misc.ChestStealer;
+import club.auth.hydraware.module.modules.misc.FastPlace;
 import club.auth.hydraware.module.modules.movement.*;
 import club.auth.hydraware.module.modules.player.*;
-import club.auth.hydraware.module.modules.render.*;
+import club.auth.hydraware.module.modules.render.CustomTime;
+import club.auth.hydraware.module.modules.render.FullBright;
+import club.auth.hydraware.module.modules.render.NoRender;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -66,8 +72,8 @@ public class ModuleManager {
     }
 
     public Module getModule(String name) {
-        for(Module m : modules) {
-            if(m.getName().equalsIgnoreCase(name)) {
+        for (Module m : modules) {
+            if (m.getName().equalsIgnoreCase(name)) {
                 return m;
             }
         }
@@ -76,8 +82,8 @@ public class ModuleManager {
 
     public ArrayList<Module> getModsInCategory(Module.Category cat) {
         ArrayList<Module> mods = new ArrayList<Module>();
-        for(Module m : modules) {
-            if(m.getCategory() == cat) {
+        for (Module m : modules) {
+            if (m.getCategory() == cat) {
                 mods.add(m);
             }
         }
@@ -86,8 +92,8 @@ public class ModuleManager {
 
     @SubscribeEvent
     public void onKey(InputEvent.KeyInputEvent event) {
-        if(Keyboard.getEventKeyState()) {
-            for(Module m : modules) {
+        if (Keyboard.getEventKeyState()) {
+            for (Module m : modules) {
                 if (m.getKey() == Keyboard.getEventKey()) {
                     m.toggle();
                 }
@@ -99,8 +105,8 @@ public class ModuleManager {
     public void onTick(TickEvent.ClientTickEvent event) {
         if (Minecraft.getMinecraft().player == null || Minecraft.getMinecraft().world == null)
             return;
-        for(Module m : modules) {
-            if(m.isToggled()) {
+        for (Module m : modules) {
+            if (m.isToggled()) {
                 m.update();
             }
         }
@@ -108,8 +114,8 @@ public class ModuleManager {
 
     @SubscribeEvent
     public void onRender(RenderWorldLastEvent event) {
-        for(Module m : modules) {
-            if(m.isToggled()) {
+        for (Module m : modules) {
+            if (m.isToggled()) {
                 m.render();
             }
         }

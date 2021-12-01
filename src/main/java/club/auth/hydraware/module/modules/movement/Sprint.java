@@ -9,14 +9,13 @@ import java.util.ArrayList;
 public class Sprint extends Module {
 
     ArrayList<String> modes = new ArrayList<String>();
+    SettingMode mode = this.register("Mode", modes, "Rage");
 
     public Sprint() {
-        super("Sprint","Automatic sprints.",0, Category.MOVEMENT);
+        super("Sprint", "Automatic sprints.", 0, Category.MOVEMENT);
         modes.add("Legit");
         modes.add("Rage");
     }
-
-    SettingMode mode = this.register("Mode", modes, "Rage");
 
     public void onDisable() {
         if (mc.world != null) {

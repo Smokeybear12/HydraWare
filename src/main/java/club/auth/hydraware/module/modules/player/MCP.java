@@ -8,15 +8,15 @@ import net.minecraft.util.EnumHand;
 import org.lwjgl.input.Mouse;
 
 public class MCP extends Module {
-    public MCP() {
-        super("MCP","Middle click pearl.",0,Category.PLAYER);
-    }
-
     private boolean clicked = false;
+
+    public MCP() {
+        super("MCP", "Middle click pearl.", 0, Category.PLAYER);
+    }
 
     @Override
     public void update() {
-        if (Mouse.isButtonDown((int)2)) {
+        if (Mouse.isButtonDown((int) 2)) {
             if (!clicked) {
                 throwPearl();
             }

@@ -5,7 +5,7 @@ import net.minecraft.client.settings.KeyBinding;
 
 public class AutoWalk extends Module {
     public AutoWalk() {
-        super("AutoWalk","Presses the move forward key.",0,Category.MOVEMENT);
+        super("AutoWalk", "Presses the move forward key.", 0, Category.MOVEMENT);
     }
 
     @Override

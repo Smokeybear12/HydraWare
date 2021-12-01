@@ -8,12 +8,10 @@ import net.minecraft.network.play.server.SPacketEntityVelocity;
 import net.minecraft.network.play.server.SPacketExplosion;
 
 public class Velocity extends Module {
-    public Velocity() {super("Velocity","Removes knockback.",0,Category.PLAYER);}
-
     @EventHandler
     private final Listener<PacketEvent.Receive> receiveListener = new Listener<>(event -> {
-        if (event.getPacket() instanceof SPacketEntityVelocity){
-            if(((SPacketEntityVelocity) event.getPacket()).getEntityID() == mc.player.getEntityId()) {
+        if (event.getPacket() instanceof SPacketEntityVelocity) {
+            if (((SPacketEntityVelocity) event.getPacket()).getEntityID() == mc.player.getEntityId()) {
                 event.cancel();
             }
         }
@@ -21,4 +19,8 @@ public class Velocity extends Module {
             event.cancel();
         }
     });
+
+    public Velocity() {
+        super("Velocity", "Removes knockback.", 0, Category.PLAYER);
+    }
 }

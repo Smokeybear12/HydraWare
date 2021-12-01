@@ -7,10 +7,6 @@ import me.zero.alpine.listener.Listener;
 import net.minecraft.network.play.client.CPacketPlayer;
 
 public class AntiHunger extends Module {
-    public AntiHunger() {
-        super("AntiHunger","Causes you to not lose hunger even while jumping.",0,Category.PLAYER);
-    }
-
     @EventHandler
     private final Listener<PacketEvent.Receive> receiveListener = new Listener<>(event -> {
         if (event.getPacket() instanceof CPacketPlayer) {
@@ -22,4 +18,8 @@ public class AntiHunger extends Module {
             }
         }
     });
+
+    public AntiHunger() {
+        super("AntiHunger", "Causes you to not lose hunger even while jumping.", 0, Category.PLAYER);
+    }
 }

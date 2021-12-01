@@ -7,19 +7,19 @@ public class Timer {
     private long time = -1L;
 
     public boolean passedS(double s) {
-        return (getMs(System.nanoTime() - this.time) >= (long)(s * 1000.0D));
+        return (getMs(System.nanoTime() - this.time) >= (long) (s * 1000.0D));
     }
 
     public boolean passedM(double m) {
-        return (getMs(System.nanoTime() - this.time) >= (long)(m * 1000.0D * 60.0D));
+        return (getMs(System.nanoTime() - this.time) >= (long) (m * 1000.0D * 60.0D));
     }
 
     public boolean passedDms(double dms) {
-        return (getMs(System.nanoTime() - this.time) >= (long)(dms * 10.0D));
+        return (getMs(System.nanoTime() - this.time) >= (long) (dms * 10.0D));
     }
 
     public boolean passedDs(double ds) {
-        return (getMs(System.nanoTime() - this.time) >= (long)(ds * 100.0D));
+        return (getMs(System.nanoTime() - this.time) >= (long) (ds * 100.0D));
     }
 
     public boolean passedMs(long ms) {
@@ -83,8 +83,7 @@ public class Timer {
         this.current = System.currentTimeMillis();
     }
 
-    public void resetTimeSkipTo(long p_MS)
-    {
+    public void resetTimeSkipTo(long p_MS) {
         this.time = System.currentTimeMillis() + p_MS;
     }
 }

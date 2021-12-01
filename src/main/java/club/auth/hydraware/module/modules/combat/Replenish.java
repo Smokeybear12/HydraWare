@@ -14,14 +14,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Replenish extends Module {
-    public Replenish() {
-        super("Replenish","",0,Category.COMBAT);
-    }
-
-    SettingInteger tickDelay = this.register("TickDelay",1,0,10);
-    SettingInteger threshold = this.register("Threshold",32,1,64);
-
+    SettingInteger tickDelay = this.register("TickDelay", 1, 0, 10);
+    SettingInteger threshold = this.register("Threshold", 32, 1, 64);
     private int delayStep = 0;
+
+    public Replenish() {
+        super("Replenish", "", 0, Category.COMBAT);
+    }
 
     @Override
     public void update() {
@@ -97,8 +96,8 @@ public class Replenish extends Module {
             return false;
         }
         if (stack1.getItem() instanceof ItemBlock && stack2.getItem() instanceof ItemBlock) {
-            final Block block1 = ((ItemBlock)stack1.getItem()).getBlock();
-            final Block block2 = ((ItemBlock)stack2.getItem()).getBlock();
+            final Block block1 = ((ItemBlock) stack1.getItem()).getBlock();
+            final Block block2 = ((ItemBlock) stack2.getItem()).getBlock();
             if (!block1.blockMaterial.equals(block2.blockMaterial)) {
                 return false;
             }

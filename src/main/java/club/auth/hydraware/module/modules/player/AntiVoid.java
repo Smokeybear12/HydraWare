@@ -1,14 +1,10 @@
 package club.auth.hydraware.module.modules.player;
 
 import club.auth.hydraware.module.Module;
-import club.auth.hydraware.setting.settings.SettingInteger;
-import club.auth.hydraware.setting.settings.SettingMode;
-
-import java.util.ArrayList;
 
 public class AntiVoid extends Module {
     public AntiVoid() {
-        super("AntiVoid","",0,Category.PLAYER);
+        super("AntiVoid", "", 0, Category.PLAYER);
     }
 
     @Override

@@ -8,7 +8,7 @@ import net.minecraft.util.math.BlockPos;
 
 public class Quiver extends Module {
     public Quiver() {
-        super("Quiver","Shoots Positive Arrow Effects At You!", 0,  Category.COMBAT);
+        super("Quiver", "Shoots Positive Arrow Effects At You!", 0, Category.COMBAT);
     }
 
     @Override

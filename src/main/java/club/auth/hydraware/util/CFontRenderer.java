@@ -8,12 +8,14 @@ import java.awt.*;
 
 public class CFontRenderer extends CFont {
 
+    private final int[] colorCode = new int[32];
+    private final String colorcodeIdentifiers = "0123456789abcdefklmnor";
     protected CFont.CharData[] boldChars = new CFont.CharData[256];
     protected CFont.CharData[] italicChars = new CFont.CharData[256];
     protected CFont.CharData[] boldItalicChars = new CFont.CharData[256];
-
-    private final int[] colorCode = new int[32];
-    private final String colorcodeIdentifiers = "0123456789abcdefklmnor";
+    protected DynamicTexture texBold;
+    protected DynamicTexture texItalic;
+    protected DynamicTexture texItalicBold;
 
     public CFontRenderer(Font font, boolean antiAlias, boolean fractionalMetrics) {
         super(font, antiAlias, fractionalMetrics);
@@ -171,10 +173,6 @@ public class CFontRenderer extends CFont {
         super.setFractionalMetrics(fractionalMetrics);
         setupBoldItalicIDs();
     }
-
-    protected DynamicTexture texBold;
-    protected DynamicTexture texItalic;
-    protected DynamicTexture texItalicBold;
 
     private void setupBoldItalicIDs() {
         texBold = setupTexture(this.font.deriveFont(1), this.antiAlias, this.fractionalMetrics, this.boldChars);

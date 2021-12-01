@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class InventoryUtil implements Global{
+public class InventoryUtil implements Global {
     public static int findHotbarBlock(Class c) {
         for (int i = 0; i < 9; ++i) {
             ItemStack stack = InventoryUtil.mc.player.inventory.getStackInSlot(i);

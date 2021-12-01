@@ -7,12 +7,11 @@ import net.minecraft.potion.Potion;
 import java.util.Objects;
 
 public class EffectRemover extends Module {
+    SettingBoolean levitation = register("Levitation", true);
+    SettingBoolean jumpBoost = register("JumpBoost", true);
     public EffectRemover() {
-        super("EffectRemover","Removes the effects from you.",0,Category.PLAYER);
+        super("EffectRemover", "Removes the effects from you.", 0, Category.PLAYER);
     }
-
-    SettingBoolean levitation = register("Levitation",true);
-    SettingBoolean jumpBoost = register("JumpBoost",true);
 
     public void update() {
         if (levitation.getValue()) {

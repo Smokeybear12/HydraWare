@@ -7,11 +7,11 @@ import net.minecraft.network.play.client.CPacketVehicleMove;
 import java.util.Objects;
 
 public class Vanish extends Module {
-    public Vanish() {
-        super("Vanish","",0,Category.PLAYER);
-    }
-
     Entity entity;
+
+    public Vanish() {
+        super("Vanish", "", 0, Category.PLAYER);
+    }
 
     @Override
     public void onEnable() {
@@ -34,7 +34,8 @@ public class Vanish extends Module {
                 entity.posY = mc.player.posY;
                 entity.posZ = mc.player.posZ;
                 Objects.requireNonNull(mc.getConnection()).sendPacket(new CPacketVehicleMove(entity));
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
         }
     }
 }

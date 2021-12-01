@@ -9,14 +9,13 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class NoRender extends Module {
-    public NoRender() {
-        super("NoRender","No render things",0,Category.RENDER);
-    }
-
     SettingBoolean weather = register("Weather", false);
     SettingBoolean viewBobbing = register("ViewBobbing", false);
     SettingBoolean items = register("Items", false);
-    SettingBoolean overlay = register("Overlay",false);
+    SettingBoolean overlay = register("Overlay", false);
+    public NoRender() {
+        super("NoRender", "No render things", 0, Category.RENDER);
+    }
 
     @Override
     public void update() {

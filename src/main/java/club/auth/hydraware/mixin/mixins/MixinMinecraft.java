@@ -1,7 +1,7 @@
 package club.auth.hydraware.mixin.mixins;
 
-import com.google.common.base.Stopwatch;
 import club.auth.hydraware.manager.ConfigManager;
+import com.google.common.base.Stopwatch;
 import net.minecraft.client.Minecraft;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

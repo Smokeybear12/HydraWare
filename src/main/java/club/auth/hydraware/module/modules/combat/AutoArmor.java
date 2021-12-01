@@ -18,21 +18,19 @@ import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class AutoArmor extends Module {
-    public AutoArmor() {
-        super("AutoArmor","",0,Category.COMBAT);
-    }
-
     private final SettingInteger delay = this.register("Delay", 150, 0, 500);
     private final SettingBoolean mendingTakeOff = this.register("TakeOff", false);
     private final SettingInteger closestEnemy = this.register("EnemyRange", 8, 1, 20);
     private final SettingInteger repair = this.register("Repair", 80, 1, 100);
     private final SettingInteger actions = this.register("Packets", 3, 1, 12);
     private final SettingBoolean curse = this.register("Vanishing", false);
-
     private final Timer timer = new Timer();
     private final Queue<InventoryUtil.Task> taskList = new ConcurrentLinkedQueue<>();
     private final List<Integer> doneSlots = new ArrayList<Integer>();
     boolean flag;
+    public AutoArmor() {
+        super("AutoArmor", "", 0, Category.COMBAT);
+    }
 
     @Override
     public void onLogin() {
