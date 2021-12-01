@@ -23,7 +23,7 @@ version = "1.0.0"
 group = "club.auth.hydraware"
 archivesBaseName = "HydraWare"
  
-sourceCompatibility = targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
+sourceCompatibility = targetCompatibility = '1.8'
 compileJava {
     sourceCompatibility = targetCompatibility = '1.8'
 }
